@@ -1,0 +1,16 @@
+{% extends 'maitreGestionnaire.html' %}
+
+{% block titrepage %}
+<p>Modifier un commentaire</p>
+{% endblock %}
+
+{% block formulaire %}
+<h4>Modifier le commentaire</h4>
+<form method="post">
+    <table>
+        {% csrf_token %}
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value="Enregistrer">
+</form>
+{% endblock %}

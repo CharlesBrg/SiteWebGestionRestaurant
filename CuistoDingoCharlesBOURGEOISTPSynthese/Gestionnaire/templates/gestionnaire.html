@@ -1,0 +1,45 @@
+{% extends 'maitreGestionnaire.html' %}
+{% load static %}
+
+{% block titrepage %} Gestionnaire - accueil {% endblock %}
+{% block menuPage %}
+
+<div class="dropdown">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin :10px;">
+    Gérer
+    </a>
+    <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="{% url 'ajoutRestaurant' %}">Ajouter un restaurant</a></li>
+    </ul>
+</div>
+{% endblock %}
+{% block liste %}
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+            <th></th>
+            <th scope="col-1">Numéro</th>
+            <th scope="col-1">Nom du restaurant</th>
+            <th scope="col-1">Ville du restaurant</th>
+            <th scope="col-1">Type du restaurant</th>
+            <th scope="col-1">Image</th>
+            <th scope="col-1"></th>
+            <th scope="col-1"></th>
+        </thead>
+        {% for r in restaurants %}
+        <tbody>
+            <td>
+                <th>{{ r.noRestaurant }}</th>
+                <th>{{ r.nomRestaurant }}</th>
+                <td>{{ r.villeRestaurant }}</td>
+                <td>{{ r.typeRestaurant }}</td>
+                <td ><img style="width:100px;height:75px;" src="{{ r.image }}"></td>
+                <td><a href="{% url 'modifierRestaurant' r.noRestaurant %}"><img src="{% static 'images/icons8-pencil-30.png' %}" style="width: 20px; height:20px"></a></td>
+                <td><a href="{% url 'supprimerRestaurant' r.noRestaurant %}"><img src="{% static 'images/icons8-remove-30.png' %}"></a></td>
+            </td>
+        </tbody>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

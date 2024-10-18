@@ -1,0 +1,25 @@
+{% extends 'maitre.html' %}
+{% load static %}
+
+{% block titre %} CuistoDingo - Restaurant {% endblock %}
+{% block contenu %}
+<a href="/restaurants/">Retour vers la liste des restaurants</a>
+<h1>Localisation : {{ ville }}</h1>
+<div class ="card-group">
+{% for r in restaurants %}
+<div class="card" style="width: 15rem; padding: 20px;">
+    <img style="width: 100%; height: 22rem; object-fit:contain;" src="{{ r.image }}" class="card-img-top" alt="affiche">
+    <div class="card-body">
+    <h5 class="card-title">{{ r.nomRestaurant }}</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+    <li class="list-group-item">Ville : {{ r.villeRestaurant }}</a></li>
+    <li class="list-group-item">Categorie : <b>{{ r.typeRestaurant }}</b></li>
+    </ul>
+</div>
+{% if forloop.counter|divisibleby:4 and not forloop.last %}
+    <div class="w-100"></div>
+    {% endif %}
+{% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'maitreGestionnaire.html' %}
+
+{% block titrepage %}
+<p>Modifier un restaurant</p>
+{% endblock %}
+
+{% block menuPage %}
+<div class="dropdown">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin :10px;">
+    Gérer
+    </a>
+    <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="{% url 'ajoutRestaurant' %}">Ajouter un restaurant</a></li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block formulaire %}
+<h4>Modifier le restaurant</h4>
+<form method="post">
+    <table>
+        {% csrf_token %}
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value="Enregistrer">
+</form>
+{% endblock %}

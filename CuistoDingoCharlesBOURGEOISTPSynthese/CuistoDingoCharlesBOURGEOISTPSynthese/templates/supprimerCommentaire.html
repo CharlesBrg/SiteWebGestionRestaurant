@@ -1,0 +1,14 @@
+{% extends 'maitreGestionnaire.html' %}
+
+{% block titrepage %}
+<p>Supprimer un commentaire du site</p>
+{% endblock %}
+
+{% block ConfirmationFormulaire %}
+    <form method="POST">
+        {% csrf_token %}
+        <p>Voulez-vous supprimer le commentaire : <b>"{{ commentaire.commentaire }}"</b>?</p>
+        <p style="text-align: center;"><input type="submit" value="Oui"></p>
+    </form>
+    <p style="text-align: center;"><a href="{% url 'restaurants' %}">Annuler et retour à la page des restaurants</a></p>
+{% endblock %}

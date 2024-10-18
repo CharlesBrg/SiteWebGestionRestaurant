@@ -1,0 +1,17 @@
+{% extends 'maitre.html' %}
+{% load static %}
+
+{% block titre %}CuistoDingo - Accueil{% endblock %}
+{% block contenu %}
+
+<div class="container" style="text-align: center;">
+    <div class="texte" style="font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;">CuistoDingo : la référence culinaire</div>
+    <img class="image" src="{% static 'images/accueil.jpg' %}" alt="Accueil" style="width: 550px; 
+    height: 450px;
+    display: block;
+    margin: 0 auto;
+    padding: 10px;">
+</div>
+{% endblock %}

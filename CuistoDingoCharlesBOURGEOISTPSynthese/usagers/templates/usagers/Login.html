@@ -1,0 +1,21 @@
+{% extends 'maitre.html' %}
+
+{% block titre %}
+    CuistoDingo - Connexion 
+{% endblock %}
+
+{% block titrepage %}
+Connexion d'un utilisateur
+{% endblock %}
+
+{% block contenu %}
+
+<form method="post">
+    <table>
+        {% csrf_token %}
+        {{ form.as_table }}
+    </table>
+    <button type="submit">Login</button>
+</form>
+    <a href="{% url 'enregistrement' %}">Vous n'avez pas de compte ? S'inscire ! </a>
+{% endblock %}

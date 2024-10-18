@@ -1,0 +1,18 @@
+{% extends 'maitreGestionnaire.html' %}
+
+{% block titrepage %}
+<p>Supprimer un restaurant du site</p>
+{% endblock %}
+
+{% block detailRestaurant %}
+<p>Le restaurant à supprimer est : <b>{{ restaurant.nomRestaurant }}</b>, son numéro est : <b>{{restaurant.noRestaurant }}</b></p>
+{% endblock %}
+
+{% block ConfirmationFormulaire %}
+    <form method="POST">
+        {% csrf_token %}
+        <p>Voulez-vous supprimer le restaurant : <b>"{{ restaurant.nomRestaurant }}" de "{{restaurant.villeRestaurant}}" </b>?</p>
+        <p style="text-align: center;"><input type="submit" value="Oui"></p>
+    </form>
+    <p style="text-align: center;"><a href="{% url 'accueilGestionnaire' %}">Annuler et retour à la page des restaurants</a></p>
+{% endblock %}

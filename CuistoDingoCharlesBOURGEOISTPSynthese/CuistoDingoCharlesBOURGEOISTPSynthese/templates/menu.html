@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <div class="container-fluid" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/restaurants/">Restaurants</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/apropos/">A Propos</a>
+                </li>
+                <li class="nav-item">
+                    {% if user.username == 'admin' %}
+                    <a class="nav-link" href="/Gestionnaire/">Gestionnaire</a>
+                    {% endif %}
+                </li>
+                <li class="nav-item">
+                    {% if user.is_authenticated %}
+                        <a class="nav-link" href="/mes-commentaires/">Mes commentaires</a>
+                {% endif %}
+                </li>
+                <li class="nav-item">
+                    {% if user.is_authenticated %}
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-link nav-link">Logout</button>
+                    </form>{% else %}
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
+                {% endif %}
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-FVc8hAVp39E0+1EPXeFfyuCiNm9Azx0qBMDtq5PE6TkhLP7I5zBSYqRvOa+6XfTg" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shCk+5KVc2u5uAuvI+pV/6Df2J5MYYHQJoJ+K" crossorigin="anonymous"></script>
+</body>
+
+</html>
